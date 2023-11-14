@@ -12,7 +12,7 @@ const NavBar = () => {
    const navigate = useNavigate();
 
    const user = useSelector(state => state.userReducer.user )
-   console.log(user)
+   //console.log(user)
    const logout = () => {
       localStorage.removeItem("token")
       localStorage.removeItem("user")
@@ -33,10 +33,10 @@ const NavBar = () => {
                   <input className="searchbox form-control me-2 text-muted" type="search" placeholder="Search" />
                   <a className="nav nav-link text-dark fs-5 searchIcon" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
                   <NavLink className="nav nav-link text-dark fs-5" to="/posts"><i className="fa-solid fa-house"></i></NavLink>
-                  {user ? <a className="nav nav-link text-dark fs-5" href="/"><i className="fa-regular fa-heart"></i></a> : ''}
+                  {user.fullName ? <a className="nav nav-link text-dark fs-5" href="/"><i className="fa-regular fa-heart"></i></a> : ''}
                   {/**Dropdown menu for profile logo: */}
                   <div className="dropdown">
-                     {user ? <>   <NavLink className="btn" href="/" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                     {user.fullName ? <>   <NavLink className="btn" href="/" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
                         <img className='navbar-profile-pic' alt='profile-pic' src='https://plus.unsplash.com/premium_photo-1670596899123-c4c67735d77a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' />
                      </NavLink>
                         <ul className="dropdown-menu">

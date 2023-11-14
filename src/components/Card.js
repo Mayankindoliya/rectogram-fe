@@ -19,8 +19,13 @@ const Card = (props) => {
       }
    }
 
-   const submitComment = (postId) => {
-      console.log(comment)
+   const submitComment = async (postId) => {
+      setCommentBox(false);
+      const request = { "userId": user._id, "commentText": comment }
+      const response = await axios.put(`${API_BASE_URL}/comment/${postId}`, request, CONFIG_OBJ);
+      if (response.status === 200) {
+         props.getAllPosts();
+      }
    }
 
    const likeDislikePost = async (postId, type) => {
@@ -65,12 +70,20 @@ const Card = (props) => {
                </div>
                {commentBox ? <div className='row mb-2'>
                   <div className='col-8'>
-                     <textarea onChange={(e)=>setComment(e.target.value)} className='form-control'></textarea>
+                     <textarea onChange={(e) => setComment(e.target.value)} className='form-control'></textarea>
                   </div>
                   <div className='col-4'>
                      <button className='btn btn-primary' onClick={() => submitComment(props.postData._id)}>submit</button>
                   </div>
                </div> : ""}
+               {props.postData.comments.map((comment) => {
+                  return <div className='row' key={comment._id}>
+                     <div className='col-12'>
+                        {/* Comment: Display the comment text and commenter's full name */}
+                        <p>{comment.commentText} - {comment.commentedBy ? comment.commentedBy.fullName : 'Unknown'}</p>
+                     </div>
+                  </div>
+               })}
                <div className='row'>
                   <div className='col-12'>
                      <span className='p-2 text-muted'>2 Hour ago</span>

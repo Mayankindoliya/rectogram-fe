@@ -133,7 +133,7 @@ const Profile = () => {
           <img className='profile-pic img-fluid' alt='profile pic' src='https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHdpbnRlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60' />
           <p className='fs-5 fw-bold ms-2'>{user.email}</p>
           <p className='fs-5 ms-2'>{user.fullName}</p>
-          <p className='fs-5 ms-2'>UI/UX Designer @john | Follow @ {user.fullName}</p>
+          <p className='fs-5 ms-2'>UI/UX Designer | Follow @ {user.fullName}</p>
           <p className='fs-5 ms-2'>my portfolio on <a href='/'>www.portfolio.com/{user.fullName}</a></p>
         </div>
         <div className='col-md-6 d-flex flex-column justify-content-between mt-3'>
